@@ -533,7 +533,8 @@ Blu_Misc.fn.user.getDefaultUser = function() {
  * L'heure de la string supposée configurée à l'heure du serveur, soit actuellement UTC+1
  * On prend en compte cette timezone pour créer l'objet Date en Javascript
  * @param {String} date_str
- * @param {integer} offset
+ * @param {integer} UTC_offset
+ * @returns {Date}
  */
 Blu_Misc.fn.misc.dateStringToObject = function( date_str, UTC_offset ) {
     

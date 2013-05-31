@@ -94,12 +94,14 @@ p {
 .has-header-img #bluenod-logo a { top:0 }
 
 #main-menu {
-    margin-right: 50px;
+    margin-right: 2em; /* 50px */
 }
 
 
 h1 {
+    height: 38px;
     margin: 0;
+    overflow: hidden;
 }
 .client h1 {
     display: none;
@@ -120,6 +122,9 @@ h1 a.text {
     /*text-shadow: -1px -1px 1px #fff;*/
     text-shadow: 0px 2px 1px rgba(0,0,0,0.25);
     /*top: 5px;*/
+}
+.mobile h1 a.text {
+    
 }
 h1 a.text .count { /* compteur de tweets */
     color: #888;
@@ -187,6 +192,12 @@ textarea, input { outline: none; } /* Enlève le glow sur Safari / Chrome */
 
 .research {
 }
+#zonecentre .research {
+    display: none;
+    float: right;
+    /*display: inline-block;*/
+    vertical-align: bottom;
+}
 
     #recherche {
         position: relative;
@@ -201,6 +212,17 @@ textarea, input { outline: none; } /* Enlève le glow sur Safari / Chrome */
             padding: 0.5em 0;
             text-indent: 1em;
             width: 100%;
+        }
+        #zonecentre #inputrecherche {
+            background: #fff;
+            border: 1px solid #aaa;
+            -moz-border-radius: 3px; -webkit-border-radius: 3px; border-radius: 3px;
+            height: 24px;
+            margin-left: 4px;
+            margin-top: -1px;
+            padding: 0 0.5em;
+            text-indent: 0;
+            width: 10em;
         }
         #inputrecherche:focus, #inputrecherche:active {
             opacity: 1;
@@ -296,6 +318,7 @@ textarea, input { outline: none; } /* Enlève le glow sur Safari / Chrome */
     line-height: 36px;
 }
 .has-header-img #share { line-height: 60px; }
+.mobile #share { display: none; }
 
 .twitter-share-button {
     display:inline-block;
@@ -335,6 +358,15 @@ textarea, input { outline: none; } /* Enlève le glow sur Safari / Chrome */
 
 canvas#canvas {
     box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.05) inset;
+    
+    /* Supprime effet de sélection sur le canvas lors d'une tap */
+    -webkit-tap-highlight-color: transparent;
+    -webkit-user-select: none;  /* Chrome all / Safari all */
+    -moz-user-select: none;     /* Firefox all */
+    -ms-user-select: none;      /* IE 10+ */
+    /* No support for these yet, use at own risk */
+    -o-user-select: none;
+    user-select: none;  
 }
 
 #canvas-screen, #welcome-screen {
@@ -608,10 +640,10 @@ canvas#canvas {
 }
 #ulgranul li {
     background: #aaa;
+    -moz-border-radius: 2px; -webkit-border-radius: 2px; border-radius: 2px;
     float: left;
     margin: 3px;
     padding: 2px 6px;
-    -moz-border-radius: 2px; -webkit-border-radius: 2px; border-radius: 2px;
 }
 #ulgranul li:hover, #ulgranul li.actif {
     background: #38D5FF;
@@ -630,16 +662,16 @@ canvas#canvas {
     #ctlzoom li {
         margin: 0;
         padding: 0;
-        text-align: center;
-        width: 36px;
+        /*text-align: center;*/
+        /*width: 36px;*/
     }
-        #ctlzoom .zoom, #ctlzoom .home {
+        #ctlzoom a {
             background-color: #fff;
             border: 1px solid #ddd;
             -moz-border-radius: 3px; -webkit-border-radius: 3px; border-radius: 3px;
             -moz-box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.05); -webkit-box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.05); box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.05);
             color: #555555;
-            display: block;
+            display: inline-block;
             font-size: 24px;
             font-weight: bold;
             height: 24px;
@@ -659,19 +691,29 @@ canvas#canvas {
             text-decoration: none;
         }
         #ctlzoom .home {
-            background: #fff url("mapping/img/icons2.png?20130204_2") no-repeat -196px -4px;
-            margin-bottom: 12px;
+            background: #fff url("mapping/img/icons2.png?20130507_1") no-repeat -196px -4px;
             text-indent: -9999px;
+        }
+        #ctlzoom .find-user {
+            background: #fff url("mapping/img/icons2.png?20130507_1") no-repeat -228px -4px;
+            text-indent: -9999px;
+        }
+        #ctlzoom .find-user.selected {
+            background-color: rgba(26, 186, 255, 0.5);
+            border-color: #1ABAFF;
+            opacity: 1;
         }
         #ctlzoom .zoom.in { 
             -moz-border-bottom-left-radius: 0; -moz-border-bottom-right-radius: 0;
             -webkit-border-bottom-left-radius: 0; -webkit-border-bottom-right-radius: 0;
             border-bottom-left-radius: 0; border-bottom-right-radius: 0;
+            margin-top: 12px;            
         }
         #ctlzoom .zoom.out {
             -moz-border-top-left-radius: 0; -moz-border-top-right-radius: 0;
             -webkit-border-top-left-radius: 0; -webkit-border-top-right-radius: 0;
             border-top-left-radius: 0; border-top-right-radius: 0;
+            margin-bottom: 12px;
         }
         
     #zoneslider {
@@ -936,7 +978,12 @@ canvas#canvas {
             opacity: 1;
         }
         
-        
+#graph-header .actions-project {
+    float: right;
+}
+#graph-header .actions-project > a {
+    line-height: 36px;
+}
         
         
 /* Notifications */
@@ -1292,6 +1339,7 @@ canvas#canvas {
 
 
 #panels-wrapper {
+    background: #fff;
     /*border-right: 1px solid #ccc;*/
     bottom: 0;
     /*-moz-box-shadow: 0px 0 15px #ddd; -webkit-box-shadow: 0px 0 15px #ddd; box-shadow: 0px 0 15px #ddd;*/
@@ -1304,6 +1352,10 @@ canvas#canvas {
 }
 .no-header-img #panels-wrapper {
     top: 36px;
+}
+body.mobile #panels-wrapper {
+    display: none;
+    width: 100%;
 }
 
 #panels {
@@ -1323,7 +1375,7 @@ canvas#canvas {
     /*overflow-y: hidden;*/
     position: absolute;
     top: 0;
-    width: 390px;
+    width: 100%; /* 390px; */
 }
     .panel .wrap {
         padding: 15px;
@@ -2061,6 +2113,33 @@ canvas#canvas {
 
 
 /*
+ * Mappings Facebook 
+ */
+
+.fb-check-response {
+    padding: 1em 0;
+}
+    .fb-preview-object {
+        background: #eee;
+        -moz-border-radius: 0.3em; -webkit-border-radius: 0.3em; border-radius: 0.3em;
+        font-size: 13px;
+        padding: 1.5em;
+    }
+        .fb-preview-object img {
+            vertical-align: middle;
+        }
+        .fb-preview-object .name {
+            font-weight: bold;
+
+        }
+        .fb-preview-object .description {
+            color: #999;
+            font-size: 0.9em;
+            margin-top: 0.5em;
+        }
+
+    
+/*
  * Champ de recherche (client)
  */
 
@@ -2469,7 +2548,7 @@ input.new-search:focus, input.new-search:active {
         display: none;
         padding: 15px;
         margin-bottom: 37px; /* hauteur de #sidebar-menu */
-        margin-top: 15px;
+        /*margin-top: 15px;*/
         word-wrap: break-word;
     }
 
@@ -2533,6 +2612,9 @@ input.new-search:focus, input.new-search:active {
     .profile-info .extra-data {
         margin: 1.5em 0 0;
         padding: 0;
+    }
+    .global-map .profile-info .extra-data {
+        display: none;
     }
     .profile-info .extra-data.connections {
         border-bottom: 1px solid #eee;
@@ -2635,7 +2717,7 @@ input.new-search:focus, input.new-search:active {
             text-decoration: none;
         }
             .user-actions .ico { 
-                background: url("mapping/img/icons2.png?20130204_2") no-repeat;
+                background: url("mapping/img/icons2.png?20130507_1") no-repeat;
                 display: inline-block;
                 height: 32px;
                 vertical-align: middle;
@@ -2747,6 +2829,9 @@ iframe.twitter-follow-button {
     box-shadow: 0 2px 3px rgba(0, 0, 0, 0.25);
     overflow: hidden;
 }
+    .global-map #sidebar-menu {
+        display: none;
+    }
     
 
 #tabs-menu {
@@ -2761,8 +2846,9 @@ iframe.twitter-follow-button {
         float: left;
         text-align: center;
         height: 100%;
-        width: 33.3%;
+        width: 50%; /* 33.3% */
     }
+    
         #tabs-menu a {
             border-left: 1px solid rgba(0, 0, 0, 0.5);
             box-shadow: 1px 0 0 rgba(255, 255, 255, 0.25) inset;
@@ -2791,7 +2877,7 @@ iframe.twitter-follow-button {
             /*color: #222;*/
         }
             #tabs-menu a .ico {
-                background: url("mapping/img/icons2.png?20130204_2") no-repeat;
+                background: url("mapping/img/icons2.png?20130507_1") no-repeat;
                 display: inline-block;
                 height: 32px;
                 margin-left: -12px;
@@ -2807,20 +2893,20 @@ iframe.twitter-follow-button {
             #tabs-menu .selected span {
                 opacity: 1;
             }
-            #tabs-menu .users .ico {
-                background-position: 0 0;
-            }
             #tabs-menu .profile .ico {
                 background-position: -32px 0;
+            }
+            #tabs-menu .users .ico {
+                background-position: 0 0;
             }
             #tabs-menu .tweets .ico {
                 background-position: -64px 0;
             }
-            #tabs-menu .users.selected .ico {
-                background-position: 0 -32px;
-            }
             #tabs-menu .profile.selected .ico {
                 background-position: -32px -32px;
+            }
+            #tabs-menu .users.selected .ico {
+                background-position: 0 -32px;
             }
             #tabs-menu .tweets.selected .ico {
                 background-position: -64px -32px;
@@ -2866,19 +2952,19 @@ iframe.twitter-follow-button {
 /* iPad / tablette : orientation paysage "forcée" */
 @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation:portrait) {
     
-    body {
+    /*body {
         transform:rotate(90deg);
-        -ms-transform:rotate(90deg); /* IE 9 */
-        -moz-transform:rotate(90deg); /* Firefox */
-        -webkit-transform:rotate(90deg); /* Safari and Chrome */
-        -o-transform:rotate(90deg); /* Opera */
+        -ms-transform:rotate(90deg);
+        -moz-transform:rotate(90deg);
+        -webkit-transform:rotate(90deg);
+        -o-transform:rotate(90deg);
         width: 100%;
         height: 100%;
         overflow: hidden;
         position: absolute;
         top: 0;
         left: 0;
-    }
+    }*/
     
 }
  
