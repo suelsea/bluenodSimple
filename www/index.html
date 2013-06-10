@@ -16,11 +16,11 @@
         
         <!-- JS -->
         <script type="text/javascript" src="js/jquery/jquery.min.js"></script>
-        <!--<script type="text/javascript" src="js/jquery-ui/1.8.12.custom.min.js"></script>  -->
+        <script type="text/javascript" src="js/jquery-ui/1.8.12.custom.min.js"></script>
         <script type="text/javascript" src="js/jquery/jquery.json-min.js"></script>
         <script type="text/javascript" src="js/jquery/jquery.nicescroll.3/jquery.nicescroll.min.js"></script>        
         <script type="text/javascript" src="js/app.k169xY31oS.js"></script>
-        <script type="text/javascript" src="js/mixpanel-2.1.min.js"></script>
+        <!--<script type="text/javascript" src="js/mixpanel-2.1.min.js"></script>-->
         <script type="text/javascript" src="js/misc.js"></script>
         <script type="text/javascript" src="js/twitter/bootstrap.min.js"></script>
         <script type="text/javascript" src="js/lib/jquery.hammer.min.js"></script>
@@ -170,8 +170,21 @@
         </div>
         
         <script type="text/javascript">
-    
+
+            var mixpanel = {
+                    track : function(){},
+                    disable : function(){},
+                    set_config : function(){},
+                    identify: function(){},
+                    name_tag:function(){},
+                    people : {
+                        identify :function(){},
+                        set : function(){},
+                    }                
+                };
             $(document).ready( function() {
+
+                
                 
                 // Projets
                                 
